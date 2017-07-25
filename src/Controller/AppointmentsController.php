@@ -12,17 +12,27 @@ use App\Controller\AppController;
  */
 class AppointmentsController extends AppController
 {
+    
     public function isAuthorized($user)
     {
         // All registered users can add articles
         if ($this->request->getParam('action') === 'add') {
-            return true;
+            //return true;
+            if ($this->Auth->user('role') == 'patient') {
+                return true;
+            }
         }
 
-        // The owner of an article can edit and delete it
-        if (in_array($this->request->getParam('action'), ['edit', 'delete'])) {
+        if (in_array($this->request->getParam('action'), ['edit'])) {
             $itemId = (int)$this->request->getParam('pass.0');
             if ($this->Appointments->isDoctor($itemId, $user['id'])) {
+                return true;
+            }
+        }
+
+        if (in_array($this->request->getParam('action'), ['delete'])) {
+            $itemId = (int)$this->request->getParam('pass.0');
+            if ($this->Appointments->isDoctor($itemId, $user['id']) || $this->Appointments->isPatient($itemId, $user['id'])) {
                 return true;
             }
         }
@@ -73,6 +83,9 @@ class AppointmentsController extends AppController
         $appointment = $this->Appointments->newEntity();
         if ($this->request->is('post')) {
             $appointment = $this->Appointments->patchEntity($appointment, $this->request->getData());
+            $appointment->patient_id = $this->Auth->user('id');
+            //pr($appointment);exit;
+            
             if ($this->Appointments->save($appointment)) {
                 $this->Flash->success(__('The appointment has been saved.'));
 

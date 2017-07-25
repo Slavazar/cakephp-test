@@ -93,5 +93,8 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+        
+        $loggedUser = $this->Auth->user();
+        $this->set('loggedUser', $loggedUser);
     }
 }

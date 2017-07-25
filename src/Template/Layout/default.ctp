@@ -41,6 +41,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
         <div class="top-bar-section">
+            <ul class="right">
+                <?php if ($loggedUser): ?>
+                    <li style="color: white; line-height: 2.8rem;">Hello, <?= $loggedUser['username'] ?></li>
+                <?php endif; ?>
+                <li><?php echo $this->Html->link('Home', '/'); ?></li>
+                <li><?php echo $this->Html->link('Logout', '/users/logout'); ?></li>
+            </ul>
         </div>
     </nav>
     <?= $this->Flash->render() ?>

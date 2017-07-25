@@ -79,11 +79,18 @@ class AppointmentsTable extends Table
             ->time('app_time')
             ->requirePresence('app_time', 'create')
             ->notEmpty('app_time');
-
+        /*
         $validator
             ->boolean('confirmed')
             ->requirePresence('confirmed', 'create')
             ->notEmpty('confirmed');
+         * 
+         */
+        
+        $validator->inList('status', 
+            ['doctor', 'patient'],
+            'Please enter a valid status'
+        );
 
         return $validator;
     }

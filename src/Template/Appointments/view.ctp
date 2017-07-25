@@ -17,28 +17,32 @@
     <h3><?= h($appointment->title) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Title') ?></th>
-            <td><?= h($appointment->title) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($appointment->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Doctor Id') ?></th>
-            <td><?= $this->Number->format($appointment->doctor_id) ?></td>
+            <th scope="row"><?= __('Title') ?></th>
+            <td><?= h($appointment->title) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Patient Id') ?></th>
-            <td><?= $this->Number->format($appointment->patient_id) ?></td>
+            <th scope="row"><?= __('Doctor') ?></th>
+            <td><?= $appointment->doctor->username ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('App Date') ?></th>
-            <td><?= h($appointment->app_date) ?></td>
+            <th scope="row"><?= __('Patient') ?></th>
+            <td><?= $appointment->patient->username ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('App Time') ?></th>
-            <td><?= h($appointment->app_time) ?></td>
+            <th scope="row"><?= __('Date') ?></th>
+            <td><?= $this->Time->format($appointment->app_date, 'yyyy-MM-dd') ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Time') ?></th>
+            <td><?= $this->Time->format($appointment->app_time, 'HH:mm') ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Status') ?></th>
+            <td><?= $appointment->status; ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
@@ -47,10 +51,6 @@
         <tr>
             <th scope="row"><?= __('Modified') ?></th>
             <td><?= h($appointment->modified) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Confirmed') ?></th>
-            <td><?= $appointment->confirmed ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
 </div>

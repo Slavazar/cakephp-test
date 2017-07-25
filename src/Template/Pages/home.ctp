@@ -57,7 +57,7 @@ $cakeDescription = 'CakePHP: test application';
     <div class="columns large-6">
         <h3>Appointments</h3>
         <ul>
-            <li class="bullet book"><a href="http://book.cakephp.org/3.0/en/">All Appointments</a></li>
+            <li class="bullet book"><?php echo $this->Html->link('All Appointments', '/appointments'); ?></li>
         </ul>
         <p>
     </div>

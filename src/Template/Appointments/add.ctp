@@ -15,11 +15,11 @@
         <legend><?= __('Add Appointment') ?></legend>
         <?php
             echo $this->Form->control('doctor_id');
-            echo $this->Form->control('patient_id');
+            //echo $this->Form->control('patient_id');
             echo $this->Form->control('title');
             echo $this->Form->control('app_date');
             echo $this->Form->control('app_time');
-            echo $this->Form->control('confirmed');
+            //echo $this->Form->control('confirmed');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

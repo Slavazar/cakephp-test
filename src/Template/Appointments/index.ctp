@@ -19,9 +19,9 @@
                 <th scope="col"><?= $this->Paginator->sort('doctor_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('patient_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('title') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('app_date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('app_time') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('confirmed') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('app_date', 'Date') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('app_time', 'Time') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('status') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -31,12 +31,12 @@
             <?php foreach ($appointments as $appointment): ?>
             <tr>
                 <td><?= $this->Number->format($appointment->id) ?></td>
-                <td><?= $this->Number->format($appointment->doctor_id) ?></td>
-                <td><?= $this->Number->format($appointment->patient_id) ?></td>
+                <td><?= $appointment->doctor->username ?></td>
+                <td><?= $appointment->patient->username ?></td>
                 <td><?= h($appointment->title) ?></td>
-                <td><?= h($appointment->app_date) ?></td>
-                <td><?= h($appointment->app_time) ?></td>
-                <td><?= h($appointment->confirmed) ?></td>
+                <td><?= $this->Time->format($appointment->app_date, 'yyyy-MM-dd') ?></td>
+                <td><?= $this->Time->format($appointment->app_time, 'HH:mm') ?></td>
+                <td><?= h($appointment->status) ?></td>
                 <td><?= h($appointment->created) ?></td>
                 <td><?= h($appointment->modified) ?></td>
                 <td class="actions">

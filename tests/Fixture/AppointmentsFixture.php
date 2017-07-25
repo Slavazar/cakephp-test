@@ -23,7 +23,7 @@ class AppointmentsFixture extends TestFixture
         'title' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'app_date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'app_time' => ['type' => 'time', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'confirmed' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'status' => ['type' => 'enum', 'length' => null, 'null' => false, 'default' => 'waiting', 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
@@ -45,11 +45,11 @@ class AppointmentsFixture extends TestFixture
         [
             'id' => 1,
             'doctor_id' => 1,
-            'patient_id' => 1,
+            'patient_id' => 2,
             'title' => 'Lorem ipsum dolor sit amet',
             'app_date' => '2017-07-25',
             'app_time' => '14:39:51',
-            'confirmed' => 1,
+            'status' => 'waiting',
             'created' => '2017-07-25 14:39:51',
             'modified' => '2017-07-25 14:39:51'
         ],

@@ -93,8 +93,16 @@ class AppointmentsController extends AppController
             }
             $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
         }
-        $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
-        $patients = $this->Appointments->Patients->find('list', ['limit' => 200]);
+        
+        $doctors = $this->Appointments->Doctors->find('list', [
+            'conditions' => ['Doctors.role' => 'doctor'],
+            'keyField' => 'id',
+            'valueField' => 'username'
+            //'limit' => 200
+        ]);
+        
+        //$patients = $this->Appointments->Patients->find('list', ['limit' => 200]);
+        
         $this->set(compact('appointment', 'doctors', 'patients'));
         $this->set('_serialize', ['appointment']);
     }
@@ -120,8 +128,15 @@ class AppointmentsController extends AppController
             }
             $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
         }
-        $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
-        $patients = $this->Appointments->Patients->find('list', ['limit' => 200]);
+        //$doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
+        
+        $patients = $this->Appointments->Patients->find('list', [
+            'conditions' => ['Patients.role' => 'patient'],
+            'keyField' => 'id',
+            'valueField' => 'username'
+            //'limit' => 200
+        ]);
+        
         $this->set(compact('appointment', 'doctors', 'patients'));
         $this->set('_serialize', ['appointment']);
     }

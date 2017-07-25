@@ -88,7 +88,7 @@ class AppointmentsTable extends Table
          */
         
         $validator->inList('status', 
-            ['doctor', 'patient'],
+            ['waiting', 'confirmed', 'cancelled'],
             'Please enter a valid status'
         );
 

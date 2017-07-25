@@ -20,12 +20,15 @@
     <fieldset>
         <legend><?= __('Edit Appointment') ?></legend>
         <?php
-            echo $this->Form->control('doctor_id');
+            //echo $this->Form->control('doctor_id');
             echo $this->Form->control('patient_id');
             echo $this->Form->control('title');
             echo $this->Form->control('app_date');
             echo $this->Form->control('app_time');
-            echo $this->Form->control('confirmed');
+            echo $this->Form->control('status', [
+                'options' => ['waiting' => 'waiting', 'confirmed' => 'confirmed', 'cancelled' => 'cancelled']
+            ]);
+            //echo $this->Form->control('status');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

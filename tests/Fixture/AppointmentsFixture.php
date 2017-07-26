@@ -23,7 +23,7 @@ class AppointmentsFixture extends TestFixture
         'title' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'app_date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'app_time' => ['type' => 'time', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'status' => ['type' => 'enum', 'length' => null, 'null' => false, 'default' => 'waiting', 'comment' => '', 'precision' => null],
+        'status' => ['type' => 'string', 'length' => null, 'null' => false, 'default' => 'waiting', 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [

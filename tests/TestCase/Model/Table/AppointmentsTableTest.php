@@ -25,6 +25,7 @@ class AppointmentsTableTest extends TestCase
      */
     public $fixtures = [
         'app.appointments',
+        'app.users',
         //'app.doctors',
         //'app.patients'
     ];
@@ -81,5 +82,51 @@ class AppointmentsTableTest extends TestCase
     public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
+    }
+    
+    public function testSaveMethod()
+    {
+        $data = [
+            'doctor_id' => 1,
+            'patient_id' => 2,
+            'title' => 'Lorem ipsum dolor sit amet',
+            'app_date' => '2017-07-25',
+            'app_time' => '14:39:51',
+            'status' => 'waiting',
+            'created' => '2017-07-25 14:39:51',
+            'modified' => '2017-07-25 14:39:51'
+        ];
+        
+        $appointment = $this->Appointments->newEntity();
+        $appointment = $this->Appointments->patchEntity($appointment, $data);
+        //pr($appointment);
+        
+        $result = $this->Appointments->save($appointment);
+        //var_dump($result);
+        
+        $this->assertInstanceOf('Cake\ORM\Entity', $result);
+    }
+    
+    public function testSaveMethodFalse()
+    {
+        $data = [
+            'doctor_id' => 1,
+            'patient_id' => null,
+            'title' => 'Lorem ipsum dolor sit amet',
+            'app_date' => '2017-07-25',
+            'app_time' => '14:39:51',
+            'status' => 'waiting',
+            'created' => '2017-07-25 14:39:51',
+            'modified' => '2017-07-25 14:39:51'
+        ];
+        
+        $appointment = $this->Appointments->newEntity();
+        $appointment = $this->Appointments->patchEntity($appointment, $data);
+        
+        $result = $this->Appointments->save($appointment);
+        
+        $expected = false;
+
+        $this->assertEquals($expected, $result);
     }
 }

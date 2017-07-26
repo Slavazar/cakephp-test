@@ -71,6 +71,12 @@ class AppointmentsTable extends Table
             ->notEmpty('title');
 
         $validator
+            ->notEmpty('doctor_id');
+
+        $validator
+            ->notEmpty('patient_id');
+
+        $validator
             ->date('app_date')
             ->requirePresence('app_date', 'create')
             ->notEmpty('app_date');

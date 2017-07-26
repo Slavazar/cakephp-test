@@ -17,7 +17,7 @@ class AppointmentsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.appointments',
-        //'app.doctors',
+        'app.users',
         //'app.patients'
     ];
 
@@ -48,7 +48,31 @@ class AppointmentsControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        //$this->markTestIncomplete('Not implemented yet.');
+        
+        // Set session data
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 2,
+                    'username' => 'patient',
+                ]
+            ]
+        ]);
+        
+        $data = [
+            'doctor_id' => 1,
+            'title' => 'Lorem ipsum dolor sit amet',
+            'app_date' => '2017-07-25',
+            'app_time' => '14:39:51',
+            'status' => 'waiting',
+            'created' => '2017-07-25 14:39:51',
+            'modified' => '2017-07-25 14:39:51'
+        ];
+        
+        $this->post('/appointments/add', $data);
+
+        $this->assertResponseSuccess();        
     }
 
     /**

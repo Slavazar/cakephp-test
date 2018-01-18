@@ -1,4 +1,4 @@
-# CakePHP Test Application
+# CakePHP: Application for Appointments 
 
 ## Installation
 
